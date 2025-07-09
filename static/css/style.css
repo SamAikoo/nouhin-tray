@@ -139,6 +139,13 @@ body {
   font-size: 26px;
 }
 
+.home_note {
+    width: fit-content;
+    margin: 0 auto;
+    font-weight: 500;
+}
+
+
 .home_img {
   display: block;
   width: 280px;
