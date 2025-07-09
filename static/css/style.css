@@ -133,7 +133,7 @@ body {
 
 .home_top {
   width: fit-content;
-  margin: 0 auto;
+  margin: 0 auto 12px;
   letter-spacing: 0.08em;
   font-weight: 600;
   font-size: 26px;
