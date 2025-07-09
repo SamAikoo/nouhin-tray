@@ -235,12 +235,14 @@ s .container {
   background-color: #fff;
   padding: 12px;
   border: 1px solid #333;
+  line-height: 1.4;
 }
 .form_item select {
   width: 120px;
   background-color: #fff;
   padding: 12px;
   border: 1px solid #333;
+    line-height: 1.4;
 }
 
 .bottom {
@@ -287,6 +289,7 @@ footer {
 .dashboard .form_item input,
 .dashboard .form_item textarea {
   width: 100%;
+    line-height: 1.4;
 }
 
 .dashboard_side {
@@ -353,12 +356,14 @@ footer {
   padding: 12px;
   border: 1px solid #333;
   margin: 0 auto;
+    line-height: 1.4;
 }
 .edit_top select {
   width: 120px;
   background-color: #fff;
   padding: 12px;
   border: 1px solid #333;
+    line-height: 1.4;
 }
 
 .edit_item {
