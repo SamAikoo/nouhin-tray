@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}ホーム - 納品トレー{% endblock %}
+
+{% block content %}
+<div class="home_content">
+    <p class="home_top">面倒な納品管理を、ひとつのツールで。</p>
+
+    <img class="home_img" src="./static/img/home_img.webp" alt="">
+
+<div class="home_btn">
+    <a class="btn" href="{{ url_for('login') }}">ログイン</a>
+    <a class="btn"href="{{ url_for('register') }}">新規登録</a>
+</div>
+</div>
+{% endblock %}

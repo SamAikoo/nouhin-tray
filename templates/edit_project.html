@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}ホーム - 納品トレー{% endblock %}
+
+{% block content %}
+
+<div class="edit">
+
+<h2 class="heading">案件編集</h2>
+
+<div class="edit_wrap edit_top">
+  <form method="POST">
+  <div class="edit_item">
+    <input name="title" value="{{ project.title }}" required>
+  </div>
+  <div class="edit_item">
+    <input name="deadline" value="{{ project.deadline }}" required>
+  </div>
+  <div class="edit_item">
+    <select name="status">
+    <option value="進行中" {% if project.status == '進行中' %}selected{% endif %}>進行中</option>
+    <option value="完了" {% if project.status == '完了' %}selected{% endif %}>完了</option>
+  </select>
+  </div>
+  <div class="edit_item">
+    <textarea name="memo">{{ project.memo }}</textarea>
+  </div>
+  <button class="btn btn-ssm" type="submit">保存</button>
+</form>
+</div>
+
+<hr>
+
+<div class="edit_wrap edit_bottom">
+  <h3 class="sub_heading">資料アップロード</h3>
+
+<form action="{{ url_for('upload_file', project_id=project.id) }}" method="POST" enctype="multipart/form-data">
+  <input type="file" name="file" required>
+  <button class="btn btn-ssm btn-upload" type="submit">アップロード</button>
+</form>
+
+<div class="edit_file">
+  <h4>アップロード済みファイル</h4>
+<ul>
+  {% if project.files %}
+    {% for file in project.files %}
+      <li>
+        <a href="{{ url_for('static', filename='uploads/' + file.filename) }}" target="_blank">{{ file.filename }}</a>
+        （{{ file.uploaded_at.strftime('%Y-%m-%d') }}）
+      </li>
+    {% endfor %}
+  {% else %}
+    <li>ファイルはありません</li>
+  {% endif %}
+</ul>
+</div>
+
+
+<a class="btn btn-sm" href="{{ url_for('dashboard') }}">戻る</a>
+</div>
+
+</div>
+
+
+{% endblock %}

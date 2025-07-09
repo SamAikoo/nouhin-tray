@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}納品トレー{% endblock %}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  <header class="header">
+    <h1>納品トレー</h1>
+    <nav>
+      {% if request.endpoint == 'dashboard' or request.endpoint == 'edit_project' %}
+      <a href="{{ url_for('login') }}">ログアウト</a>
+      {% else %}
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('login') }}">ログイン</a>
+      <a href="{{ url_for('register') }}">新規登録</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 納品トレー</p>
+  </footer>
+
+</body>
+
+</html>

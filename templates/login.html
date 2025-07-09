@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}ホーム - 納品トレー{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<h2 class="heading">ログイン</h2>
+<form method="POST">
+    <div class="form_list">
+      <div class="form_item">
+        <span>ユーザー名</span>
+        <input name="username" required>
+      </div>
+      <div class="form_item">
+        <span>パスワード</span>
+        <input name="password" type="password" required><br>
+      </div>
+    </div>
+  <button class="btn" type="submit">ログイン</button>
+</form>
+<a class="bottom" href="/register">新規登録はこちら</a>
+
+
+</div>
+
+
+{% endblock %}

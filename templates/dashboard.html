@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}ホーム - 納品トレー{% endblock %}
+
+{% block content %}
+
+<div class="dashboard">
+
+  <div class="dashboard_content">
+    <h2 class="heading">案件一覧</h3>
+      <ul class="dashboard_list">
+        {% for project in projects %}
+        <li class="dashboard_item">
+          <div class="project_top">
+            <strong>{{ project.title }}</strong>（{{ project.deadline }}｜{{ project.status }}）
+          </div>
+          <div class="project_memo">
+            {{ project.memo }}
+          </div>
+
+          <div>
+
+            <p>アップロード済みファイル：</p>
+            <ul>
+              {% if project.files %}
+              {% for file in project.files %}
+              <li>
+                <a href="{{ url_for('static', filename='uploads/' + file.filename) }}" target="_blank">{{ file.filename
+                  }}</a>
+                （{{ file.uploaded_at.strftime('%Y-%m-%d') }}）
+              </li>
+              {% endfor %}
+              {% else %}
+              <li>ファイルはありません</li>
+              {% endif %}
+            </ul>
+          </div>
+
+          <div class="project_btn">
+            <a class="btn btn-ssm" href="{{ url_for('edit_project', project_id=project.id) }}">編集</a>
+          <form action="{{ url_for('delete_project', project_id=project.id) }}" method="POST" style="display:inline;"
+            onsubmit="return confirm('本当に削除しますか？');">
+            <button class="btn btn-ssm" type="submit">削除</button>
+          </form>
+          </div>
+        </li>
+        {% else %}
+        <li>案件はまだありません</li>
+        {% endfor %}
+      </ul>
+
+  </div>
+
+  <div class="dashboard_side">
+
+    <form method="POST">
+      <div class="form_list">
+        <div class="form_item">
+          <span>案件名</span>
+          <input name="title" placeholder="案件名" required>
+        </div>
+        <div class="form_item">
+          <span>納期</span>
+          <input name="deadline" placeholder="納期 (例: 2025-07-31)" required>
+        </div>
+        <div class="form_item">
+          <span>進行状況</span>
+          <select name="status">
+            <option value="進行中">進行中</option>
+            <option value="完了">完了</option>
+          </select>
+        </div>
+        <div class="form_item">
+          <span>メモ</span>
+          <textarea name="memo" placeholder="メモ"></textarea>
+        </div>
+      </div>
+      <button class="btn btn-sm" type="submit">案件を追加</button>
+    </form>
+  </div>
+
+</div>
+
+
+{% endblock %}
