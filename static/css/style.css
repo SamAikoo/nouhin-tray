@@ -140,6 +140,7 @@ body {
 }
 
 .home_note {
+  display: block;
     width: fit-content;
     margin: 0 auto;
     font-weight: 500;
